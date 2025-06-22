@@ -22,6 +22,6 @@ GPL-3 (GNU public license)
 #include <BetterAHT20.h>
 void activatePinMode(int relayPin, int sensor_pin);
 int readMoisture(void);
-void controlRelay(int moisture, int threshold);
+void controlRelay(int relayPin, int moisture, int threshold);
 #endif
 
