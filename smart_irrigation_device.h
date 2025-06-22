@@ -17,11 +17,11 @@ GPL-3 (GNU public license)
 
 #ifndef IRRIGATION_DEVICE
 #define IRRIGATION_DEVICE
-#define RELAYPIN 8 // Relay Pin
-#define SENSORPIN A0 // The Sensor
 //#include <BetterTSL2591.h> // <- no need to use this now
 #include <BetterBMP280.h>
 #include <BetterAHT20.h>
-void activatePinMode(void);
-void readMoisture(void);
+void activatePinMode(int relayPin, int sensor_pin);
+int readMoisture(void);
+void controlRelay(int moisture, int threshold);
 #endif
+

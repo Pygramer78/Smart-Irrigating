@@ -1,23 +1,23 @@
 #include "smart_irrigation_device.h"
 
-void activatePinMode(void)
+void activatePinMode(int relayPin, int sensor_pin)
 {
-  Serial.begin(9600);
-  pinMode(RELAYPIN, OUTPUT);
-  pinMode(SENSORPIN, INPUT);
-  Serial.println("Reading from the sensor...");
-  delay(2000);
+  pinMode(relayPin, OUTPUT);
+  pinMode(sensor_pin, INPUT);
 }
 
-void readMoisture(void)
+int readMoisture(void)
 {
   int output_value;
   output_value = analogRead(SENSORPIN);
   output_value = map(output_value, 550, 10, 0, 100);
-  Serial.print("Moisture: ");
-  Serial.print(output_value);
-  Serial.println("%");
-  if (output_value < 0)
+  return output_value;
+}
+
+bool controlRelay(int moisture, int threshold)
+{
+  bool activate = (moisture < threshold);
+  if (activate)
   {
     digitalWrite(RELAYPIN, LOW);
   }
@@ -25,5 +25,5 @@ void readMoisture(void)
   {
     digitalWrite(RELAYPIN, HIGH);
   }
-  delay(2000);
+  return activate;
 }
