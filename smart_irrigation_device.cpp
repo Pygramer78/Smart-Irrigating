@@ -14,16 +14,16 @@ int readMoisture(void)
   return output_value;
 }
 
-bool controlRelay(int moisture, int threshold)
+bool controlRelay(int relayPin, int moisture, int threshold)
 {
   bool activate = (moisture < threshold);
   if (activate)
   {
-    digitalWrite(RELAYPIN, LOW);
+    digitalWrite(relayPin, LOW);
   }
   else 
   {
-    digitalWrite(RELAYPIN, HIGH);
+    digitalWrite(relayPin, HIGH);
   }
   return activate;
 }
