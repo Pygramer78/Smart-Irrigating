@@ -17,9 +17,6 @@ GPL-3 (GNU public license)
 
 #ifndef IRRIGATION_DEVICE
 #define IRRIGATION_DEVICE
-//#include <BetterTSL2591.h> // <- no need to use this now
-#include <BetterBMP280.h>
-#include <BetterAHT20.h>
 void activatePinMode(int relayPin, int sensor_pin);
 int readMoisture(void);
 void controlRelay(int relayPin, int moisture, int threshold);
